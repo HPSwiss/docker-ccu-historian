@@ -1,0 +1,14 @@
+version: '3'
+services:
+  ccu-historian:
+    image: docker.pkg.github.com/m3h7/docker-ccu-historian/ccu-historian:2.3.0-1
+    restart: always
+    environment:
+      TZ: Europe/Berlin
+    ports:
+    - '2000:80'
+    - '2098:2098'
+    - '2099:2099'
+    volumes:
+    - './volumes/config:/opt/ccu-historian/config:ro'
+    - './volumes/database:/database:rw'
